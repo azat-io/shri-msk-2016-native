@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/gulp",
-    "lint:js": "./node_modules/.bin/eslint --ignore-path .gitignore --fix .",
+    "lint:js": "./node_modules/.bin/eslint --fix ./src/es6/*.es6",
     "lint:css": "stylelint \"./src/postcss/**/*.css\"",
     "lint:pug": "./node_modules/.bin/pug-lint \"./src/pug/index.pug\"",
     "lint": "npm-run-all --parallel lint:*",
