@@ -68,7 +68,7 @@ gulp.task('postcss', () => {
     inlineSVG,
     svgo,
     cssNext({
-      autoprefixer: ['ie >= 10', '> 2% in RU']
+      autoprefixer: ['Android >= 4, last 2 Chrome versions']
     }),
     cssMqpacker,
     browserReporter({
@@ -112,4 +112,3 @@ gulp.task('stream', () => {
 })
 
 gulp.task('default', gulp.series('pug', 'postcss', 'es6', gulp.parallel('stream', 'watch')))
-
