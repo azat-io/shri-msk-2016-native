@@ -2,6 +2,24 @@ const audio = document.querySelector('.ring__song')
 
 let db, input, ul
 
+document.addEventListener('deviceready', function () {
+  const cordova = window.cordova
+
+  cordova.plugins.backgroundMode.setDefaults({
+    text: 'Doing heavy tasks.'
+  })
+
+  cordova.plugins.backgroundMode.enable()
+
+  cordova.plugins.backgroundMode.onactivate = function () {
+    setTimeout(function () {
+      cordova.plugins.backgroundMode.configure({
+        text: 'Running in background for more than 5s now.'
+      })
+    }, 1000)
+  }
+}, false)
+
 function databaseOpen (callback) {
   const req = window.indexedDB.open('alarmDB', 1)
 
