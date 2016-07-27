@@ -1,2 +1,246 @@
 @import 'normalize.css';
 
+@font-face {
+  font-family: 'Yandex Sans Text Web';
+  src: url('../fonts/yandex-sans.eot');
+  src:
+    url('../fonts/yandex-sans.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/yandex-sans.woff') format('woff'),
+    url('../fonts/yandex-sans.ttf') format('truetype'),
+    url('../fonts/yandex-sans.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --colorYellow: #fbd75d;
+}
+
+.app {
+  font-family: 'Yandex Sans Text Web', Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background: var(--colorYellow);
+  size: 100% 4em;
+
+  &__title {
+    font-size: responsive 1.25em 1.5em;
+    font-range: 20em 64em;
+    color: #000;
+    margin: 0 0 0 1.25em;
+    font-weight: normal;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 1.5em 1.25em;
+
+  &__time {
+    font-size: responsive 3em 5em;
+    font-range: 20em 64em;
+    margin-top: 1.25em;
+  }
+
+  &__button {
+    font-size: responsive 1.25em 1.75em;
+    font-range: 20em 64em;
+    border: 0;
+    border-radius: 4px;
+    background: var(--colorYellow);
+    color: #000;
+    outline: 0;
+    padding: 8px 12px;
+    margin: 1.5em 0;
+  }
+
+  &__alarm {
+    width: 100%;
+    margin-top: 1.75em;
+    padding: 0;
+
+    &_elem {
+      display: block;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      font-size: 1.5em;
+      line-height: 1.25em;
+      padding: 8px 0;
+
+      & button {
+        background: transparent;
+        border: 0;
+        outline: 0;
+        float: right;
+      }
+
+      &::before {
+        content: '';
+        display: inline-block;
+        size: 0.65em;
+        background-image: svg-load(../svg/set-alarm.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        padding-left: 1em;
+      }
+
+      &:nth-child(1) {
+        border: 0;
+      }
+    }
+  }
+}
+
+.ring {
+  position: absolute;
+  top: 0;
+  size: 100%;
+  background: var(--colorYellow);
+  visibility: hidden;
+
+  &__title {
+    font-size: responsive 2.5em 3.25em;
+    font-range: 20em 64em;
+    line-height: 4em;
+    text-align: center;
+    animation: a linear 1s infinite;
+  }
+
+  &__img {
+    display: block;
+    margin: 0 auto;
+    size: 8em;
+    background-image: svg-load(../svg/set-alarm.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: a linear 1s infinite;
+  }
+}
+
+@keyframes a {
+  0% {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+  10% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  20% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  30% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  40% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  50% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  60% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  70% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  80% {
+    -webkit-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  90% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
+  to {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+  }
+}
+
+.modal {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  size: 100%;
+
+  &__overlay {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.65);
+    size: 100%;
+    top: 0;
+
+    &_close-button {
+      color: #fff;
+      float: right;
+      margin: 2px 24px 0 0;
+      font-size: 3em;
+    }
+  }
+
+  &__form {
+    z-index: 999;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 420px;
+
+    &_input {
+      width: 100%;
+      display: block;
+      font-size: responsive 1.25em 1.75em;
+      font-range: 20em 64em;
+      line-height: 2em;
+      outline: 0;
+      border-radius: 4px;
+      border: 1px;
+    }
+
+    &_button {
+      display: block;
+      width: 100%;
+      max-width: 120px;
+      font-size: responsive 1.25em 1.75em;
+      font-range: 20em 64em;
+      border: 0;
+      border-radius: 4px;
+      background: var(--colorYellow);
+      color: #000;
+      outline: 0;
+      padding: 8px 0;
+      margin: 1em auto;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  background: var(--colorYellow);
+  size: 100% 3em;
+
+  &__link {
+    font-size: responsive 1em 1.25em;
+    font-range: 20em 64em;
+    color: #000;
+    margin: 0 0 0 1.25em;
+    text-decoration: none;
+  }
+}
