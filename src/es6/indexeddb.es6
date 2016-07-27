@@ -23,7 +23,7 @@ let alarmList = []
 function alarmsFound () {
   input = document.querySelector('.modal__form_input')
   ul = document.querySelector('.content__alarm')
-  document.body.addEventListener('submit', onSubmit)
+  document.querySelector('.modal__form').addEventListener('submit', onSubmit)
   databaseAlarmsGet(renderAllAlarms)
 
   databaseAlarmsGet(function (alarm) {
