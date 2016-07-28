@@ -92,8 +92,8 @@ function renderAllAlarms (alarms) {
 }
 
 function alarmToHtml (alarm) {
-  return '<li class="content__alarm_elem">' + '<span>' + alarm.alarmTime + '</span>' +
-  '<button>&times;</button>' + '</li>'
+  return '<li class="content__alarm_elem">' + '<span>' + alarm.alarmTime +
+    '</span>' + '</li>'
 }
 
 function databaseAlarmsGet (callback) {
