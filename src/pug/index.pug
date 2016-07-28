@@ -16,7 +16,7 @@ html
     section(class='ring')
       p(class='ring__title') Ring-ring!
       div(class='ring__img')
-      audio(class='ring__song' src='audio/song.ogg')
+      audio(class='ring__song' src='audio/song.ogg' loop='loop')
     section(class='modal')
       .modal__overlay
         span(class='modal__overlay_close-button') &times;
@@ -24,5 +24,5 @@ html
         input(class='modal__form_input' type='time' placeholder='Put the time')
         button(class='modal__form_button' type='submit') Set
     footer(class='footer')
-      p(class='footer__link') Build 0.5
+      p(class='footer__link') Build 0.6
   script(src='js/main.js')
