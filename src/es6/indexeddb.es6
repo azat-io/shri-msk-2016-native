@@ -130,15 +130,17 @@ function onSubmit (e) {
 }
 
 function databaseAlarmsAdd (alarmTime, callback) {
-  let transaction = db.transaction(['alarm'], 'readwrite')
-  let store = transaction.objectStore('alarm')
-  let req = store.put({
-    alarmTime: alarmTime,
-    timeStamp: Date.now()
-  })
+  if (input.value !== '') {
+    let transaction = db.transaction(['alarm'], 'readwrite')
+    let store = transaction.objectStore('alarm')
+    let req = store.put({
+      alarmTime: alarmTime,
+      timeStamp: Date.now()
+    })
 
-  transaction.oncomplete = (e) => {
-    callback()
+    transaction.oncomplete = (e) => {
+      callback()
+    }
+    req.onerror = databaseError
   }
-  req.onerror = databaseError
 }
